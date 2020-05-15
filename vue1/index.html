@@ -8,16 +8,31 @@
 </head>
 <body>
     <div id="app">
+        <span v-bind:title="title">
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
         {{ message }}
     </div>
 
     <script>
+        var data = {
+            message: 'new Vue1',
+            title: 'vue1'
+        }
         var app = new Vue({
             el: '#app',
-            data: {
-                message: 'new Vue'
-            }
+            data
         })
+        
+        
+        app.$watch('message', (newVal, oldVal) => {
+            console.log(newVal, oldVal);
+        })
+        app.message = '1'
+        app.$watch('message', (newVal, oldVal) => {
+            console.log(newVal, oldVal);
+        })
+        app.$data.message = '2'
     </script>
 </body>
 </html>
