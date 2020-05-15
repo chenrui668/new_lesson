@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <span v-bind:title="title">
+        <span v-bind:title="title" v-bind:class="{red:!show}">
             鼠标悬停几秒钟查看此处动态绑定的提示信息！
         </span>
         {{ message }}
@@ -17,7 +22,8 @@
     <script>
         var data = {
             message: 'new Vue1',
-            title: 'vue1'
+            title: 'vue1',
+            show: false
         }
         var app = new Vue({
             el: '#app',
